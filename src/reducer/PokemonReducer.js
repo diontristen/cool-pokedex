@@ -1,7 +1,11 @@
 const initState = {
     pokemonList: [],
+    pokemonOffset: 0,
     searchList: null,
     didSearch: false,
+    openDrawer: false,
+    selectedPokemonId: null,
+    pokemonTeam: []
 }
 
 const PokemonReducer = (state = initState, action) => {
@@ -10,7 +14,8 @@ const PokemonReducer = (state = initState, action) => {
             let valid = action.payload ? true : false
             return {
                 ...state,
-                pokemonList: valid ? action.payload : [],
+                pokemonList: valid ? state.pokemonList.concat(action.payload) : [],
+                didSearch: false
             };
         case "SEARCH_POKEMON":
             return {
@@ -23,6 +28,31 @@ const PokemonReducer = (state = initState, action) => {
                 ...state,
                 didSearch: false
             };
+        case "UPDATE_OFFSET":
+            return {
+                ...state,
+                pokemonOffset: action.payload
+            }
+        case "TOOGLE_DRAWER":
+            return {
+                ...state,
+                openDrawer: !state.openDrawer
+            }
+        case "SELECT_POKEMON":
+            return {
+                ...state,
+                selectedPokemonId: action.payload
+            }
+        case "ADD_POKEMON":
+            return {
+                ...state,
+                pokemonTeam: [...state.pokemonTeam, action.payload]
+            }
+        case "REMOVE_POKEMON":
+            return {
+                ...state,
+                pokemonTeam: action.payload
+            }
         default:
             return state;
     }

@@ -31,14 +31,19 @@ export default function SearchPokemon() {
 
     const handleChangeSearch = (e) => {
         setSearchValue(e.target.value.toLowerCase())
+        if (e.target.value === '') {
+            handleClearField()
+        }
     }
 
-    const handleSubmitSearch = async() => {
-        let result = await SearchPokemonService(searchValue)
-        dispatch({
-            type: "SEARCH_POKEMON",
-            payload: result
-        })
+    const handleSubmitSearch = async () => {
+        if (searchValue.trim() !== '') {
+            let result = await SearchPokemonService(searchValue)
+            dispatch({
+                type: "SEARCH_POKEMON",
+                payload: result
+            })
+        }
     }
 
     const handleClearField = () => {
@@ -47,6 +52,14 @@ export default function SearchPokemon() {
             type: "CLEAR_SEARCH",
         })
     }
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSubmitSearch()
+        }
+    }
+
+
 
     return (
         <Box w="100%">
@@ -61,8 +74,9 @@ export default function SearchPokemon() {
                             value={searchValue}
                             placeholder="Bulbasaur"
                             onChange={handleChangeSearch}
+                            onKeyPress={handleKeyPress}
                         />
-                        <InputRightElement onClick={handleClearField}  hidden={searchValue.length <= 0 ? true : false} children={<CloseIcon color="red.500" />} />
+                        <InputRightElement onClick={handleClearField} hidden={searchValue.length <= 0 ? true : false} children={<CloseIcon color="red.500" />} />
                     </InputGroup>
                     <IconButton onClick={handleSubmitSearch} bg="white" aria-label="Search Pokemon" icon={<SearchIcon />} />
                 </HStack>

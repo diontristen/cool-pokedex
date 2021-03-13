@@ -10,10 +10,13 @@ import Banner from './components/Banner'
 import NavBar from './components/Navbar'
 import { GlobalStyle } from './styles/Global'
 import Pokedex from './pages/Pokedex'
+import MyTeam from './pages/MyTeam'
 
 
 
 function App() {
+  document.title = 'Cool Pokédex'
+
   return (
     <ChakraProvider resetCSS theme={customTheme}>
       <ColorModeProvider
@@ -27,6 +30,7 @@ function App() {
           <Banner/>
             <NavBar />
             <Route path="/" exact component={Pokedex} />
+            <Route path="/myteam" exact component={MyTeam} />
           </GlobalStyle>
         </Router>
       </ColorModeProvider>
