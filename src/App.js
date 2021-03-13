@@ -1,40 +1,32 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { useDispatch } from 'react-redux';
+
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
+  ColorModeProvider,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import customTheme from './styles/theme'
+import NavBar from './components/Navbar'
+import { GlobalStyle } from './styles/Global'
+import Pokedex from './pages/Pokedex'
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+    <ChakraProvider resetCSS theme={customTheme}>
+      <ColorModeProvider
+        options={{
+          initialColorMode: "light",
+          useSystemColorMode: true
+        }}
+      >
+        <Router>
+          <GlobalStyle>
+            <NavBar />
+            <Route path="/" exact component={Pokedex} />
+          </GlobalStyle>
+        </Router>
+      </ColorModeProvider>
     </ChakraProvider>
   );
 }

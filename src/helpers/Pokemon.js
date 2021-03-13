@@ -1,0 +1,42 @@
+export const TYPE_COLORS_BG = {
+    fire: '#FDDFDF',
+	grass: '#DEFDE0',
+	electric: '#FCF7DE',
+	water: '#DEF3FD',
+	ground: '#f4e7da',
+	rock: '#d5d5d4',
+	fairy: '#fceaff',
+	poison: '#98d7a5',
+	bug: '#f8d5a3',
+	dragon: '#97b3e6',
+	psychic: '#eaeda1',
+	flying: '#F5F5F5',
+	fighting: '#E6E0D4',
+	normal: '#F5F5F5',
+    ghost: '#7b62a3',
+    steel: '#9eb7b',
+    dark: '#707070',
+    ice: '#51c4e7',
+}
+
+export const TYPE_COLORS = {
+    bug: '#729f3f',
+    dragon: '#53a4cf',
+    fairy: '#fdb9e9',
+    fire: '#fd7d24',
+    ghost: '#7b62a3',
+    ground: '#f7de3f',
+    normal: '#a4acaf',
+    pyschic: '#f366b9',
+    steel: '#9eb7b',
+    dark: '#707070',
+    electric: '#eed535',
+    fighting: '#d56723',
+    flying: '#3dc7ef',
+    grass: '#9bcc50',
+    ice: '#51c4e7',
+    poison: '#b97fc9',
+    rock: '#a38c21',
+    water: '#4592c4'
+}
+

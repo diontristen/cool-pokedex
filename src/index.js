@@ -5,10 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import PokemonReducer from './reducer/PokemonReducer'
+
+const store = createStore(PokemonReducer)
+
 ReactDOM.render(
   <StrictMode>
-    <ColorModeScript />
-    <App />
+    <Provider store={store}>
+      <ColorModeScript />
+      <App />
+    </Provider>
   </StrictMode>,
   document.getElementById('root')
 );
