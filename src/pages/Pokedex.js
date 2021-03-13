@@ -27,7 +27,6 @@ export default function Pokedex() {
     useEffect(() => {
         async function setPokemon() {
             let result = await GetPokemonService(pokemonOffset)
-            console.log(result)
             dispatch({
                 type: "SET_POKEMON",
                 payload: result[1]

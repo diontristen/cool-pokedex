@@ -9,21 +9,25 @@ export default function PokemonCard({ pokemon }) {
     const { pokemonTeam } = reducer
     const [inTeam, setInTeam] = useState(false)
     const [imageLoaded, setImageLoaded] = useState(false)
-
+    const [localPokemon, setLocalPokemon] = useState('')
     useEffect(() => {
-        let myTeam = []
-        if (pokemonTeam.length > 0) {
-            myTeam = pokemonTeam
-        } else if (pokemonTeam === null || pokemonTeam.length === 0) {
-            myTeam = JSON.parse(localStorage.getItem('my-pokemon-team'))
+        if (localPokemon !== pokemonTeam) {
+            let myTeam = []
+            if (pokemonTeam.length > 0) {
+                myTeam = pokemonTeam
+            } else if (pokemonTeam === null || pokemonTeam.length === 0 || JSON.parse(localStorage.getItem('my-pokemon-team')) !== null) {
+                myTeam = JSON.parse(localStorage.getItem('my-pokemon-team'))
+            }
+    
+            if (myTeam) {
+                if (myTeam.indexOf(pokemon.id) < 0) {
+                    setInTeam(false)
+                }
+                if (myTeam.indexOf(pokemon.id) >= 0) {
+                    setInTeam(true)
+                }
+            }
         }
-        if (myTeam.indexOf(pokemon.id) < 0) {
-            setInTeam(false)
-        }
-        if (myTeam.indexOf(pokemon.id) >= 0) {
-            setInTeam(true)
-        }
-
     }, [pokemon, pokemonTeam])
 
 
