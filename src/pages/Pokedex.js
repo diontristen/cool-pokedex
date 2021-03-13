@@ -39,7 +39,7 @@ export default function Pokedex() {
 
     return (
         <>
-            <Box w="100vw" bg={searchBgColor[colorMode]} mb="2">
+            <Box w="100%" bg={searchBgColor[colorMode]} mb="2">
                 <Flex
                     flexDirection="row"
                     justifyContent="space-between"

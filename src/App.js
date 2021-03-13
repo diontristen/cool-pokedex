@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import React from "react";
 
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import {
@@ -7,9 +6,12 @@ import {
   ColorModeProvider,
 } from '@chakra-ui/react';
 import customTheme from './styles/theme'
+import Banner from './components/Banner'
 import NavBar from './components/Navbar'
 import { GlobalStyle } from './styles/Global'
 import Pokedex from './pages/Pokedex'
+
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
       >
         <Router>
           <GlobalStyle>
+          <Banner/>
             <NavBar />
             <Route path="/" exact component={Pokedex} />
           </GlobalStyle>

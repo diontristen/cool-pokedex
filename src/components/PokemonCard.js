@@ -23,6 +23,7 @@ export default function PokemonCard({ pokemon }) {
         cursor="pointer"
         boxShadow="md"
         onClick={() => {handleViewPokemon(pokemon.id)}}
+        height="100%"
         >
             <Tag ml="8px" mt="8px" fontSize="sm" fontWeight="extrabold" size="sm" variant="solid" bg={TYPE_COLORS[pokemon.type[0]]}>
                 #{String(pokemon.id).padStart(4, '0')}

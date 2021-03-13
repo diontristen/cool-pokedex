@@ -26,7 +26,7 @@ export default function NavBar() {
     return (
         <>
             <StickNav
-                w="100vw"
+                w="100%"
                 bg={bgColor[colorMode]}
                 as="nav"
                 px={[2, 6, 6]}

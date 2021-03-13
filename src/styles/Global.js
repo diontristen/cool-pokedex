@@ -24,6 +24,7 @@ export const GlobalStyle = ({ children }) => {
               display: flex;
               flex-direction: column;
               min-height: 100vh;
+              min-width:100vw;
               background: ${colorMode === 'light' ? '#eeedef' : '#2e2e2e'};
             }
             @keyframes swing

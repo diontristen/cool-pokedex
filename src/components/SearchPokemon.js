@@ -1,7 +1,6 @@
 
 
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import {
     Box,
     Input,
@@ -19,7 +18,6 @@ import { SearchIcon, CloseIcon } from '@chakra-ui/icons'
 
 export default function SearchPokemon() {
     const { colorMode } = useColorMode();
-    const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
 
     const labelColor = {
