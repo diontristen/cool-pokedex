@@ -9,9 +9,10 @@ export default function Pokedex() {
     document.title = 'Pokédex'
     const { colorMode } = useColorMode();
     const dispatch = useDispatch();
-    const [localPokemonList, setPokemonList] = useState([]);
     const reducer = useSelector(state => state)
-    const { pokemonList} = reducer
+    const { pokemonList, searchList, didSearch } = reducer
+    const [localPokemonList, setPokemonList] = useState([]);
+
 
     const searchBgColor = {
         light: "gray.800",
@@ -30,16 +31,28 @@ export default function Pokedex() {
     }, [dispatch])
 
     useEffect(() => {
-        if (pokemonList.length <= 0) {
-            setPokemonList([])
-        } else {
-            setPokemonList(pokemonList)
+        if (!didSearch) {
+            if (pokemonList.length <= 0) {
+                setPokemonList([])
+            } else {
+                setPokemonList(pokemonList)
+            }
         }
-    }, [pokemonList])
+    }, [pokemonList, didSearch])
+
+    useEffect(() => {
+        if (didSearch) {
+            if (searchList.length !== 0) {
+                setPokemonList(searchList)
+            } else {
+                setPokemonList([])
+            }
+        }
+    }, [searchList, didSearch])
 
     return (
         <>
-            <Box w="100%" bg={searchBgColor[colorMode]} mb="2">
+            <Box w="100vw" bg={searchBgColor[colorMode]} mb="2">
                 <Flex
                     flexDirection="row"
                     justifyContent="space-between"

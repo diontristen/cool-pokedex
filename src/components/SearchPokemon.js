@@ -1,6 +1,7 @@
 
 
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import {
     Box,
     Input,
@@ -14,10 +15,12 @@ import {
     useColorMode,
 } from '@chakra-ui/react'
 import { SearchIcon, CloseIcon } from '@chakra-ui/icons'
+import { SearchPokemonService } from '../services/PokemonService'
 
 
 export default function SearchPokemon() {
     const { colorMode } = useColorMode();
+    const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
 
     const labelColor = {
@@ -31,9 +34,18 @@ export default function SearchPokemon() {
     }
 
     const handleSubmitSearch = async() => {
+        let result = await SearchPokemonService(searchValue)
+        dispatch({
+            type: "SEARCH_POKEMON",
+            payload: result
+        })
     }
 
     const handleClearField = () => {
+        setSearchValue('')
+        dispatch({
+            type: "CLEAR_SEARCH",
+        })
     }
 
     return (

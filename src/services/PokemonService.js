@@ -25,3 +25,15 @@ export const GetPokemonService = async () => {
     }
 }
 
+export const SearchPokemonService = async (searchValue) => {
+    try {
+        const url = `https://pokeapi.co/api/v2/pokemon/${searchValue}`
+        const result = await axios.get(url);
+        if (result.data) {
+            return parsePokemonList(result.data)
+        }
+    } catch (error) {
+        console.log(error)
+        return []
+    }
+}
