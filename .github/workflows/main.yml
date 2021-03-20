@@ -29,7 +29,7 @@ jobs:
       - name: Creating production build
         run: npm run build
       - name: Moving to directory
-        run: cp ./build /home/project/nodejs/pokedex
+        run: cp -r ./build /home/project/nodejs/pokedex
       - name: Done
         run: echo Done
 
