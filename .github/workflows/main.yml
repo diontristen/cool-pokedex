@@ -24,6 +24,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Run a one-line script
-        run: pwd
+      - name: Installing Packages
+        run: npm install
+      - name: Creating production build
+        run: npm run build
+      - name: Moving to directory
+        run: cp ./build /home/project/nodejs/pokedex
+      - name: Done
+        run: echo Done
 
