@@ -15,7 +15,7 @@ import MyTeam from './pages/MyTeam'
 
 
 function App() {
-  document.title = 'Cool Pokédex v3'
+  document.title = 'Cool Pokédex v4'
 
   return (
     <ChakraProvider resetCSS theme={customTheme}>
