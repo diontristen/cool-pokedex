@@ -26,8 +26,6 @@ jobs:
           node-version: 12.x
       - name: Installing Packages
         run: npm install
-        env:
-          CI: true
       - name: Creating production build
         env:
           CI: 
