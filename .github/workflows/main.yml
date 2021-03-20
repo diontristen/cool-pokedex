@@ -28,8 +28,10 @@ jobs:
         run: npm install
       - name: Creating production build
         run: npm run build
+        env:
+          CI: true
       - name: Moving to directory
         run: cp -r ./build /home/project/nodejs/pokedex
       - name: Done
-        run: echo Done
+        run: echo Done deploying the server
 
