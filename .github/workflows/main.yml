@@ -26,10 +26,12 @@ jobs:
           node-version: 12.x
       - name: Installing Packages
         run: npm install
-      - name: Creating production build
-        run: npm run build
         env:
           CI: true
+      - name: Creating production build
+         env:
+          CI: 
+        run: npm run build
       - name: Moving to directory
         run: cp -r ./build /home/project/nodejs/pokedex
       - name: Done
